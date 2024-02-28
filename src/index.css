@@ -1,0 +1,40 @@
+body {
+  background-color: lightblue;
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1 {
+  text-align: center;
+}
+.task-app {
+  background-color: white;
+  padding: 1rem;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+button {
+  background-color: lightblue;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0.2rem;
+  cursor: pointer;
+}
+button:hover {
+  background-color: teal;
+  color: white;
+}
+
+.task-container {
+  list-style: none;
+  background-color: teal;
+  padding: 0.5rem;
+}
+.task {
+  margin: 0.5rem;
+  padding: 0.3rem;
+  background-color: rgb(5, 50, 50);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

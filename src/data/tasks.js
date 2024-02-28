@@ -4,3 +4,5 @@ let tasks = [
   {id:3, name: 'Fai la spesa', isCompleted: true},
   {id:4, name: 'Porta fuori il cane', isCompleted: false},
 ]
+
+export default tasks;
