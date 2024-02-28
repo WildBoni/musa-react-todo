@@ -13,14 +13,25 @@ function App() {
   function deleteTask(idToDelete) {
     let updatedTasks = myTasks.filter(task => task.id !== idToDelete);
     setMyTasks(updatedTasks);
+  }
 
+  function addTask(text) {
+    // logica per aggiungere un nuovo task all'array
+    // {id:2, name: 'Studia CSS', isCompleted: true}
+    let newTask = {
+      id: Math.random(),
+      name: text,
+      isCompleted: false
+    }
+    let updatedTasks = [...myTasks, newTask];
+    setMyTasks(updatedTasks);
   }
 
   return (
     <>
       <h1>I miei Task</h1>
       <div className="task-app">
-        <Form />
+        <Form addTask={addTask} />
         <FilterButtonContainer />
         <TaskContainer taskList={myTasks} deleteTask={deleteTask} />
       </div>
