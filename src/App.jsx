@@ -1,3 +1,5 @@
+import Lezione from "./Lezione"
+
 function App() {
   // creo la struttura html / CSS e i componenti come da esempio nel file .jpg
   // carico i tasks dal file data/tasks.js
@@ -7,6 +9,7 @@ function App() {
   // let [] = useState(tasks)
   return (
     <>
+      <Lezione />
     </>
   )
 }
