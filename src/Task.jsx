@@ -4,7 +4,7 @@ export default function Task({taskDetails, deleteTask}) {
     <li className="task">
       <div>
         <input 
-          type="checkbox" checked={taskDetails.isCompleted}
+          type="checkbox" defaultChecked={taskDetails.isCompleted}
         />
         <span>{taskDetails.name}</span>
       </div>

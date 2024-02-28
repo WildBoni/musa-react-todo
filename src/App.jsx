@@ -1,14 +1,22 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Lezione from "./Lezione"
 import Form from "./Form"
 import FilterButtonContainer from "./FilterButtonContainer"
 import TaskContainer from "./TaskContainer"
-import tasks from './data/tasks'
+// import tasks from './data/tasks'
+import { nanoid } from 'nanoid'
+
+let storedTasks = JSON.parse(localStorage.getItem('tasks')) || []
 
 function App() {
   // integro la logica del pulsante delete
   // Suggerimento: posso mettere l'array dei tasks dentro a useState
-  let [myTasks, setMyTasks] = useState(tasks);
+  let [myTasks, setMyTasks] = useState(storedTasks);
+
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(myTasks))
+  },
+  [myTasks])
 
   function deleteTask(idToDelete) {
     let updatedTasks = myTasks.filter(task => task.id !== idToDelete);
@@ -19,10 +27,11 @@ function App() {
     // logica per aggiungere un nuovo task all'array
     // {id:2, name: 'Studia CSS', isCompleted: true}
     let newTask = {
-      id: Math.random(),
+      id: nanoid(),
       name: text,
       isCompleted: false
     }
+    console.log(newTask)
     let updatedTasks = [...myTasks, newTask];
     setMyTasks(updatedTasks);
   }
