@@ -1,11 +1,14 @@
-export default function Task({text}) {
+export default function Task({taskDetails, deleteTask}) {
+  
   return (
     <li className="task">
       <div>
-        <input type="checkbox" />
-        <span>{text}</span>
+        <input 
+          type="checkbox" checked={taskDetails.isCompleted}
+        />
+        <span>{taskDetails.name}</span>
       </div>
-      <button>Elimina</button>
+      <button onClick={() => deleteTask(taskDetails.id)}>Elimina</button>
     </li>
   )
 }

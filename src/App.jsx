@@ -10,13 +10,19 @@ function App() {
   // Suggerimento: posso mettere l'array dei tasks dentro a useState
   let [myTasks, setMyTasks] = useState(tasks);
 
+  function deleteTask(idToDelete) {
+    let updatedTasks = myTasks.filter(task => task.id !== idToDelete);
+    setMyTasks(updatedTasks);
+
+  }
+
   return (
     <>
       <h1>I miei Task</h1>
       <div className="task-app">
         <Form />
         <FilterButtonContainer />
-        <TaskContainer taskList={myTasks} />
+        <TaskContainer taskList={myTasks} deleteTask={deleteTask} />
       </div>
       {/* <Lezione /> */}
     </>
