@@ -12,7 +12,7 @@ function App() {
   // integro la logica del pulsante delete
   // Suggerimento: posso mettere l'array dei tasks dentro a useState
   let [myTasks, setMyTasks] = useState(storedTasks);
-  let [filter, setFilter] = useState('')
+  let [filter, setFilter] = useState('');
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(myTasks))
