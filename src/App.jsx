@@ -79,7 +79,7 @@ function App() {
   
   return (
     <>
-      <h1>I miei Task!!!</h1>
+      <h1>I miei Task!</h1>
       <div className="task-app">
         <Form addTask={addTask} />
         <FilterButtonContainer setFilter={setFilter} />
