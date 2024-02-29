@@ -5,7 +5,8 @@ import FilterButtonContainer from "./FilterButtonContainer"
 import TaskContainer from "./TaskContainer"
 // import tasks from './data/tasks'
 import { nanoid } from 'nanoid'
-import { TasksContext } from "./TaskContext"
+// import { TasksContext } from "./TaskContext"
+import { useSelector } from 'react-redux';
 
 // Per prima cosa vado a vedere se in localstorage esistono dei task già salvati:
 // vengono salvati in una stringa JSON, quindi devo trasformarli con JSON.parse() per ottenere l'array di task
@@ -13,10 +14,11 @@ import { TasksContext } from "./TaskContext"
 
 
 function App() {
+
   // Inizializzo il filtro con una stringa vuota: in pratica visualizzo tutti i task finchè l'utente non digita qualcosa nell'input del filtro
   let [filter, setFilter] = useState('');
-
-  let myTasks = useContext(TasksContext);
+  const myTasks = useSelector((state) => state.tasks)
+  // let myTasks = useContext(TasksContext);
   // questo useEffect viene triggerato ogni volta che modifichiamo l'array dei task
   // Serve per salvare i task in localStorage
   useEffect(() => {

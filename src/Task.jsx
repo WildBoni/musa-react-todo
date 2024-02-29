@@ -1,22 +1,19 @@
-import { useContext } from 'react';
-import { TasksDispatchContext } from "./TaskContext"
-// import { myTest } from './TaskContext';
+import { useDispatch } from 'react-redux'
+import {deleted, toggled} from './features/taskSlice'
 
 export default function Task({taskDetails}) {
-  let dispatch = useContext(TasksDispatchContext)
+  const dispatch = useDispatch()
 
   function deleteTask(taskId) {
-    dispatch({
-      type: 'deleted',
+    dispatch(deleted({
       id: taskId
-    })
+    }))
   }
 
   function toggleCompleted(taskId) {
-    dispatch({
-      type: 'toggled',
+    dispatch(toggled({
       id: taskId
-    })
+    }))
   }
   // const myVariable = useContext(myTest);
   // ricevo i dettagli del task (id, name, isCompleted)

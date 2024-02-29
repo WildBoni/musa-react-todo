@@ -1,10 +1,13 @@
-import { useContext } from "react";
+// import { useContext } from "react";
+import { useDispatch } from 'react-redux'
+import {added} from './features/taskSlice'
 import { useRef } from "react"
-import { TasksDispatchContext } from "./TaskContext"
+// import { TasksDispatchContext } from "./TaskContext"
 import { nanoid } from "nanoid";
 
 export default function Form({addTask}) {
-  const dispatch = useContext(TasksDispatchContext);
+  const dispatch = useDispatch()
+  // const dispatch = useContext(TasksDispatchContext);
   // uso un ref per accedere al testo scritto dall'utente nell'input
   const inputRef = useRef();
 
@@ -14,11 +17,10 @@ export default function Form({addTask}) {
       // se l'input non è vuoto...
       if(inputRef.current.value) {
         // ... aggiungo un task
-        dispatch({
-          type: 'added',
+        dispatch(added({
           id: nanoid(),
           name: inputRef.current.value
-        })
+        }))
         // svuoto il testo dell'input
         inputRef.current.value = '';
       }
