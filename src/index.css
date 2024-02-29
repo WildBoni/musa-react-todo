@@ -26,7 +26,7 @@ button:hover {
 
 .task-container {
   list-style: none;
-  background-color: teal;
+  background-color: rgb(155, 4, 84);
   padding: 0.5rem;
 }
 .task {
