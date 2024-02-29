@@ -1,26 +1,16 @@
-import { useState, useEffect, useContext } from "react"
-import Lezione from "./Lezione"
+import { useState, useEffect } from "react"
+import { useSelector } from 'react-redux';
 import Form from "./Form"
 import FilterButtonContainer from "./FilterButtonContainer"
 import TaskContainer from "./TaskContainer"
-// import tasks from './data/tasks'
-import { nanoid } from 'nanoid'
-// import { TasksContext } from "./TaskContext"
-import { useSelector } from 'react-redux';
-
-// Per prima cosa vado a vedere se in localstorage esistono dei task già salvati:
-// vengono salvati in una stringa JSON, quindi devo trasformarli con JSON.parse() per ottenere l'array di task
-// Se non c'è nessun task in localStorage, inizializzo l'applicazione con un array vuoto
-
 
 function App() {
-
   // Inizializzo il filtro con una stringa vuota: in pratica visualizzo tutti i task finchè l'utente non digita qualcosa nell'input del filtro
   let [filter, setFilter] = useState('');
+
+  // con useSelector accedo allo store, selezionando la slice chiamata tasks
   const myTasks = useSelector((state) => state.tasks)
-  // let myTasks = useContext(TasksContext);
-  // questo useEffect viene triggerato ogni volta che modifichiamo l'array dei task
-  // Serve per salvare i task in localStorage
+  
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(myTasks))
   },
@@ -42,7 +32,6 @@ function App() {
         <FilterButtonContainer setFilter={setFilter} />
         <TaskContainer taskList={filteredTasks} />
       </div>
-      {/* <Lezione /> */}
     </>
   )
 }

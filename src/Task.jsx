@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux'
 import {deleted, toggled} from './features/taskSlice'
 
 export default function Task({taskDetails}) {
+  // con useDispatch posso effettuare il dispatch delle azioni
   const dispatch = useDispatch()
 
   function deleteTask(taskId) {
@@ -15,9 +16,7 @@ export default function Task({taskDetails}) {
       id: taskId
     }))
   }
-  // const myVariable = useContext(myTest);
-  // ricevo i dettagli del task (id, name, isCompleted)
-  // ricevo anche la funzione da chiamare quando si cancella un task, a cui passo l'id del task che voglio eliminare
+  
   return (
     <li className={taskDetails.isCompleted ? "task-completed" : "task"}>
       <div>

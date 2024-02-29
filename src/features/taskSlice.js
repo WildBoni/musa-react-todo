@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
-
+// lo stato dell'applicazione viene inizializzato con i task recuperati da localStorage (o con un array vuoto)
 let storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
-
+// I reducers vengono gestiti in una slice
 export const taskSlice = createSlice({
   name: 'tasks',
   initialState: storedTasks,
+  // qui dentro creo tutti i reducers
   reducers: {
     deleted: (state, action) => {
       return state.filter(task => task.id !== action.payload.id)
@@ -24,7 +25,7 @@ export const taskSlice = createSlice({
   },
 })
 
-// Action creators are generated for each case reducer function
+// Devo esportare tutti i miei reducers per creare le azioni per il dispatch
 export const { deleted, added, toggled } = taskSlice.actions
 
 export default taskSlice.reducer

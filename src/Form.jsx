@@ -1,14 +1,11 @@
-// import { useContext } from "react";
 import { useDispatch } from 'react-redux'
 import {added} from './features/taskSlice'
 import { useRef } from "react"
-// import { TasksDispatchContext } from "./TaskContext"
 import { nanoid } from "nanoid";
 
 export default function Form({addTask}) {
-  const dispatch = useDispatch()
-  // const dispatch = useContext(TasksDispatchContext);
-  // uso un ref per accedere al testo scritto dall'utente nell'input
+  // con useDispatch posso effettuare il dispatch delle azioni
+  const dispatch = useDispatch();
   const inputRef = useRef();
 
   // controllo se l'utente ha premuto invio o se ha cliccato il pulsante
@@ -16,7 +13,7 @@ export default function Form({addTask}) {
     if(event.key === 'Enter' || event.type === 'click') {
       // se l'input non è vuoto...
       if(inputRef.current.value) {
-        // ... aggiungo un task
+        // ... aggiungo un task con un dispatch dell'azione
         dispatch(added({
           id: nanoid(),
           name: inputRef.current.value
