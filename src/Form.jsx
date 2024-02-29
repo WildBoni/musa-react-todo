@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { useRef } from "react"
+import { TasksDispatchContext } from "./TaskContext"
+import { nanoid } from "nanoid";
 
 export default function Form({addTask}) {
+  const dispatch = useContext(TasksDispatchContext);
   // uso un ref per accedere al testo scritto dall'utente nell'input
   const inputRef = useRef();
 
@@ -10,8 +14,11 @@ export default function Form({addTask}) {
       // se l'input non è vuoto...
       if(inputRef.current.value) {
         // ... aggiungo un task
-        // addTask arriva come prop e serve ad aggiornare l'elenco dei task
-        addTask(inputRef.current.value)
+        dispatch({
+          type: 'added',
+          id: nanoid(),
+          name: inputRef.current.value
+        })
         // svuoto il testo dell'input
         inputRef.current.value = '';
       }
