@@ -56,13 +56,34 @@ function App() {
     setMyTasks(updatedTasks);
   }
 
+  function toggleCompleted(idToToggle) {
+    // Devo trovare il task in base al suo id
+    // {id:2, name: 'Studia CSS', isCompleted: false}
+    // let taskToUpdate = myTasks.find(task => task.id === idToToggle);
+    // ribalto il valore della proprietà is completed (se false diventa true e viceversa)
+    // taskToUpdate.isCompleted = !taskToUpdate.isCompleted;
+    
+    let updatedTasks = myTasks.map((task) => {
+      // trovo il task con l'id che voglio modificare
+      if(task.id === idToToggle) {
+        // lo aggiorno copiando l'oggetto e cambiando il valore della proprietà isCompleted
+        return {...task, isCompleted: !task.isCompleted}
+      }
+      // ritorno il task aggiornato
+      return task;
+    })
+    console.log(updatedTasks)
+    // aggiorno lo stato con i miei cambiamenti
+    setMyTasks(updatedTasks);
+  }
+  
   return (
     <>
       <h1>I miei Task</h1>
       <div className="task-app">
         <Form addTask={addTask} />
         <FilterButtonContainer setFilter={setFilter} />
-        <TaskContainer taskList={filteredTasks} deleteTask={deleteTask} />
+        <TaskContainer taskList={filteredTasks} toggleCompleted={toggleCompleted} deleteTask={deleteTask} />
       </div>
       {/* <Lezione /> */}
     </>

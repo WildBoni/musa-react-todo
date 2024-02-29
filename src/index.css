@@ -38,3 +38,13 @@ button:hover {
   align-items: center;
   justify-content: space-between;
 }
+.task-completed {
+  text-decoration: line-through;
+  margin: 0.5rem;
+  padding: 0.3rem;
+  background-color: rgb(184, 197, 197);
+  color: rgb(123, 116, 116);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

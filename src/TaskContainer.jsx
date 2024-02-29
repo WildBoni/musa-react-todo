@@ -1,11 +1,12 @@
 import Task from "./Task"
 import TaskCounter from "./TaskCounter"
 
-export default function TaskContainer({taskList, deleteTask}) {
+export default function TaskContainer({taskList, toggleCompleted, deleteTask}) {
   // faccio un ciclo nell'array di task e creo il componente
   let myList = taskList.map(task => 
     <Task 
       taskDetails={task} 
+      toggleCompleted={toggleCompleted}
       deleteTask={deleteTask} 
       key={task.id}
     />
